@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Plataforma PTAP Rural</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Plantas PTAP</h2>
+    <ul id="plant-list">
+      <li>Campoalegre</li>
+      <li>Vorágine</li>
+      <li>Soledad</li>
+      <li>Carbonero</li>
+      <li>Sirena</li>
+      <li>Pichindé</li>
+      <li>Cascajal</li>
+      <li>Monte</li>
+      <li>KM 18</li>
+      <li>Montebello</li>
+    </ul>
+  </div>
+
+  <div class="main">
+    <div class="header">Panel de Monitoreo - Zona Rural de Santiago de Cali</div>
+    
+    <div class="cards">
+      <div class="card"><h3>Plantas activas</h3><p>10</p></div>
+      <div class="card"><h3>Caudal Total (L/s)</h3><p>48</p></div>
+      <div class="card"><h3>Usuarios abastecidos</h3><p>8.240</p></div>
+      <div class="card"><h3>Sensores operativos</h3><p>45 / 50</p></div>
+    </div>
+
+    <div class="charts">
+      <h3 id="plant-title">Seleccione una planta</h3>
+
+      <!-- Botón para volver -->
+      <button id="volver-btn" style="display: none;">Volver a la página principal</button>
+
+      <!-- Filtro por mes y visibilidad -->
+      <div id="filtros" style="display: none; margin: 15px 0;">
+        <label for="mes-select">Filtrar por mes:</label>
+        <select id="mes-select">
+          <option value="">-- Seleccione un mes --</option>
+          <option value="0">Enero</option>
+          <option value="1">Febrero</option>
+          <option value="2">Marzo</option>
+          <option value="3">Abril</option>
+          <option value="4">Mayo</option>
+          <option value="5">Junio</option>
+          <option value="6">Julio</option>
+          <option value="7">Agosto</option>
+          <option value="8">Septiembre</option>
+          <option value="9">Octubre</option>
+          <option value="10">Noviembre</option>
+          <option value="11">Diciembre</option>
+        </select>
+
+        <!-- Radios para seleccionar un solo gráfico -->
+        <span style="margin-left: 20px;">
+          <strong>Ver:</strong>
+          <label style="margin-left: 10px;"><input type="radio" name="grafico" id="ver-entrada" value="entrada" checked> Entrada</label>
+          <label style="margin-left: 10px;"><input type="radio" name="grafico" id="ver-salida" value="salida"> Salida</label>
+        </span>
+      </div>
+
+      <!-- Estadísticas -->
+      <div id="estadisticas" style="display: none; margin-top: 20px;">
+        <div class="cards">
+          <div class="card"><h4>Valor Máximo</h4><p id="valor-max">-</p></div>
+          <div class="card"><h4>Valor Mínimo</h4><p id="valor-min">-</p></div>
+          <div class="card"><h4>Promedio</h4><p id="valor-prom">-</p></div>
+        </div>
+      </div>
+
+      <!-- Reseña y listado -->
+      <div id="description-card" class="description-container">
+        <div class="card reseña-proyecto">
+          <h3>Reseña del Proyecto</h3>
+          <p>
+            La Plataforma PTAP Rural es una herramienta desarrollada para el monitoreo en tiempo real de 10 plantas de tratamiento de agua potable ubicadas en la zona rural de Santiago de Cali. 
+            A través de sensores instalados en puntos clave, se registran datos de caudal de entrada y salida, garantizando un seguimiento constante del desempeño de cada sistema.
+            Este sistema permite mejorar la toma de decisiones, prevenir fallas y asegurar el abastecimiento de agua segura a las comunidades rurales.
+          </p>
+        </div>
+
+        <div class="card listado-plantas">
+          <h3>Listado de Plantas PTAP</h3>
+          <ol>
+            <li>Cascajal</li>
+            <li>Vorágine</li>
+            <li>Soledad</li>
+            <li>Carbonero</li>
+            <li>Sirena</li>
+            <li>Alto Los Mangos</li>
+            <li>Pichindé</li>
+            <li>Campoalegre</li>
+            <li>KM18</li>
+            <li>Montebello</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Gráficos -->
+      <canvas id="inputChart" width="600" height="250" style="display: none;"></canvas>
+      <canvas id="outputChart" width="600" height="250" style="display: none;"></canvas>
+    </div>
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
